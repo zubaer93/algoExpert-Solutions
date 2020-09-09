@@ -1,0 +1,30 @@
+function findClosestValueInBst(tree, target) {
+	return getClosestValue(tree, target, tree.value);
+}
+
+function getClosestValue(tree, target, closestVal) {
+	if (tree == null) {
+		return closestVal;
+	}
+	if (Math.abs(target - closestVal) > Math.abs(target - tree.value)) {
+		closestVal = tree.value;
+	}
+	
+	if ( target < tree.value) {
+			return getClosestValue(tree.left, target, closestVal);
+	} else if (target > tree.value) {
+			return getClosestValue(tree.right, target, closestVal);
+	} else {
+		return closestVal;
+	}
+}
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+exports.findClosestValueInBst = findClosestValueInBst;
