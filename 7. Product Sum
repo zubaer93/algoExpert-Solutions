@@ -1,0 +1,14 @@
+function productSum(array, depth = 1) {
+	let sum = 0;
+	
+	for (item of array) {
+		if (Number.isInteger(item)) {
+			sum += item;
+		} else {
+			sum += productSum(item, depth+1)
+		}
+	}
+	return sum*depth;
+}
+
+exports.productSum = productSum;
