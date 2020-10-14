@@ -1,0 +1,13 @@
+function caesarCipherEncryptor(string, key) {
+	let result = '';
+  for(let i = 0; i < string.length; i++ ) {
+		cypherChar = string.charCodeAt(i) + key%26;
+		if (cypherChar > 122) {
+			cypherChar = cypherChar - 26;
+		}
+		result = result.concat(String.fromCharCode(cypherChar))
+	}
+	return result;
+}
+
+exports.caesarCipherEncryptor = caesarCipherEncryptor;
