@@ -1,0 +1,26 @@
+function longestPeak(array) {
+  // Write your code here.
+	let longestPeak = 0
+	for ( let i = 1; i < array.length; i++) {
+		if (array[i] > array[i-1] && array[i] > array[i+1]) {
+			let peak = 3;
+			let j = i-1;
+			let k = i+1;
+			while (j > 0 && array[j] > array[j-1]){
+				peak++;
+				j--;
+			}
+			while (k < array.length && array[k] > array[k+1]){
+				peak++;
+				k++;
+			}		
+			if (peak > longestPeak) {
+				longestPeak = peak;
+			}
+		}
+	}
+	return longestPeak;
+}
+
+// Do not edit the line below.
+exports.longestPeak = longestPeak;
