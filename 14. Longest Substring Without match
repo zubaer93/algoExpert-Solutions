@@ -1,0 +1,24 @@
+function longestSubstringWithoutDuplication(string) {
+	let longest = '';
+	for (let i = 0; i< string.length; i++) {
+		for (let j = i; j< string.length; j++) {
+			let substring = string.slice(i, j+1);
+			if (notDuplicate(substring) && substring.length > longest.length) {
+				longest = substring;
+			}
+		}
+	}
+	return longest;
+}
+function notDuplicate(str) {
+	for (let i = 0; i< str.length; i++) {
+		for (let j = i+1; j < str.length; j++) { 
+			if ( str[i] === str[j]) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+exports.longestSubstringWithoutDuplication = longestSubstringWithoutDuplication;
