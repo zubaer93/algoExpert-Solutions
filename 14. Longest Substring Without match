@@ -11,11 +11,10 @@ function longestSubstringWithoutDuplication(string) {
 	return longest;
 }
 function notDuplicate(str) {
-	for (let i = 0; i< str.length; i++) {
-		for (let j = i+1; j < str.length; j++) { 
-			if ( str[i] === str[j]) {
-				return false;
-			}
+	let sortedStr = str.split('').sort().join('');
+	for (let i = 0; i< sortedStr.length; i++) {
+		if (sortedStr[i] == sortedStr[i+1]) {
+			return false
 		}
 	}
 	return true;
