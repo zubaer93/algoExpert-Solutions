@@ -1,0 +1,20 @@
+function getPermutations(array) {
+	let allperm = [];
+	helper(array, [], allperm);
+	return allperm;
+}
+
+function helper(array, perm, allPerm) {
+	if (!array.length && perm.length) {
+		allPerm.push(perm);
+	} else {
+		for (let i = 0; i < array.length; i++) {
+			let newArray = array.slice(0, i).concat(array.slice(i + 1));
+			let newPerm = perm.concat(array[i]);
+			helper(newArray, newPerm, allPerm);
+		}
+	}
+}
+
+exports.getPermutations = getPermutations;
+ 
