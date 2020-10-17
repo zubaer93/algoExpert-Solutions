@@ -1,0 +1,32 @@
+function subarraySort(array) {
+	let minUnsortedNum = 9999;
+	let maxUnsortedNum = -9999;
+	
+	for (let i = 0; i < array.length; i++) {
+		let num = array[i];
+		if (unsorted(num, i, array)) {
+			maxUnsortedNum = Math.max(maxUnsortedNum, num);
+			minUnsortedNum = Math.min(minUnsortedNum, num);
+		}
+	}
+	if (maxUnsortedNum == -9999) return [-1, -1];
+	let leftIdx = 0
+	while (minUnsortedNum >= array[leftIdx]) {
+		leftIdx++;
+	}
+	
+	let rightIdx = array.length - 1;
+	while (maxUnsortedNum <= array[rightIdx]) {
+		rightIdx--;
+	}
+	return [leftIdx, rightIdx];
+}
+
+function unsorted(num, i, array) {
+	if (i == 0) return array[i] > array[i+1];
+	if (i == array.length-1) return array[i] < array[i-1]
+	
+	return array[i] > array[i+1] || array[i] < array[i-1];
+}
+
+exports.subarraySort = subarraySort;
